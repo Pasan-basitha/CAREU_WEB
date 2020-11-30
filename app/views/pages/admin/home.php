@@ -6,11 +6,15 @@
 	<link rel="stylesheet" type="text/css" href="../css/admin/home.css">
 	<link rel="stylesheet" type="text/css" href="../css/admin/adminHeader.css">
 	<link rel="stylesheet" type="text/css" href="../css/includecss/footer.css">
+	<link rel="stylesheet" type="text/css" href="../css/includecss/sidebar.css">
+	<link rel="stylesheet" type="text/css" href="../css/includecss/breadcrumb.css">
 	<title>Home</title>
 </head>
 <body>
-	<div class="breadcrum">
-		Home
+	<div class="breadcrum" id="breadcrum">
+		<ul class="breadcrumb">
+  			<li>Home</li>
+		</ul>
 	</div>
 	<div class="form">
 		<center>
@@ -25,19 +29,16 @@
 					<a href="usermanagement" type="submit"><p>Users</p><img src="../img/homeicons/users.svg"/></a>
 				</div>
 				<div class="column">
-					<a href="firstaids" type="submit"><p>First Aids</p><img src="../img/homeicons/firstaid.svg"/></a>
+					<a href="operators" type="submit"><p>Operators</p><img src="../img/homeicons/profile.svg"/></a>
 				</div>
 				<div class="column">
-					<a href="profile" type="submit"><p>Profile</p><img src="../img/homeicons/profile.svg"/></a>
+					<a href="firstaids" type="submit"><p>First Aids</p><img src="../img/homeicons/firstaid.svg"/></a>
 				</div>
 		  		<div class="column">
 					<a href="reports" type="submit"><p>Reports</p><img src="../img/homeicons/reports.svg"/></a>
-		  		</div>
+				</div>
 			</div>
 		</center>
 	</div>
-	<script type="text/javascript" src="../javascript/jquery.js"></script>
-	<script type="text/javascript" src="../javascript/jquery.sticky.js"></script>
-	<script type="text/javascript" src="../javascript/headerAdmin.js"></script>
 </body>
 </html>

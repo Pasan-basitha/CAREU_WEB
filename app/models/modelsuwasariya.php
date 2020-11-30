@@ -15,8 +15,9 @@
             return $result;
         }
 
-        public function updateProfile($firstname,$lastname,$username,$password,$imagename,$tmpname)
+        public function updateProfile($firstname,$lastname,$username,$imagename,$tmpname)
         {
+            
             if(empty($imagename))
             {
                 $connection = mysqli_connect('localhost','root','','careu');
@@ -50,9 +51,42 @@
             }
         }
 
+        public function changePassword($username,$oldpassword,$password)
+        {
+            $this->db->query("SELECT userName,password FROM 1990calloperator WHERE userName='{$username}' AND password='{$oldpassword}'");
+            $result = $this->db->resultSet();
+            if(!empty($result))
+            {
+                $connection = mysqli_connect('localhost','root','','careu');
+                $query="UPDATE 1990calloperator SET password='{$password}' WHERE userName='{$username}'";
+                $result1=mysqli_query($connection,$query);
+                mysqli_close($connection);
+                if($result1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public function getRecentRequests()
         {
             $this->db->query("SELECT request.requestId,firstName,lastName,gender,phoneNumber,request.time,request.date,numberOfPatients,policeStation,district FROM 1990ambulancerequest,request,servicerequester WHERE request.requestId=1990ambulancerequest.requestId AND request.userId=servicerequester.userId ORDER BY requestId DESC");
+            $result = $this->db->resultSet();
+            return $result;
+        }
+
+        public function getRecentRequestAll($requestid)
+        {
+            $this->db->query("SELECT request.requestId,firstName,lastName,gender,phoneNumber,request.time,request.date,numberOfPatients,policeStation,district,description FROM 1990ambulancerequest,request,servicerequester WHERE request.userId=servicerequester.userId AND request.requestId='{$requestid}' AND 1990ambulancerequest.requestId='{$requestid}'");
+            // $this->db->query("SELECT time,date,numberOfPatients,policeStation,district,description FROM 1990ambulancerequest WHERE 1990ambulancerequest.requestId='{$requestid}'");
             $result = $this->db->resultSet();
             return $result;
         }
